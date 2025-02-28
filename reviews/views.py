@@ -42,3 +42,5 @@ def book_delete(request, book_id):
         book.delete()
         return redirect('book_list')
     return render(request, 'reviews/book_confirm_delete.html', {'book': book})
+
+##for testing
