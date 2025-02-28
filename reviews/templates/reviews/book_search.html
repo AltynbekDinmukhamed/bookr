@@ -1,0 +1,17 @@
+{% extends "reviews/base.html" %}
+
+{% block content %}
+<h1>Результаты поиска</h1>
+<form method="GET" action="{% url 'book_search' %}">
+    <input type="text" name="q" placeholder="Поиск книг..." value="{{ query }}">
+    <button type="submit">Искать</button>
+</form>
+<ul>
+    {% for book in books %}
+        <li><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a> - {{ book.author }}</li>
+    {% empty %}
+        <li>Книг не найдено.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'book_list' %}">Назад</a>
+{% endblock %}

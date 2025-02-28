@@ -1,0 +1,15 @@
+{% extends "reviews/base.html" %}
+
+{% block content %}
+<h1>Список книг</h1>
+<a href="{% url 'book_create' %}" class="btn btn-primary">Добавить книгу</a>
+<ul>
+    {% for book in books %}
+        <li>
+            <a href="{% url 'book_detail' book.id %}">{{ book.title }}</a> - {{ book.author }}
+            <a href="{% url 'book_update' book.id %}">Редактировать</a> |
+            <a href="{% url 'book_delete' book.id %}">Удалить</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
